@@ -3,8 +3,8 @@ package com.waracle.cakemgr.data;
 import com.waracle.cakemgr.dao.CakeEntity;
 import com.waracle.cakemgr.dao.CakeRepository;
 import com.waracle.cakemgr.model.Cake;
+import com.waracle.cakemgr.service.CakeMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
@@ -29,12 +30,12 @@ public class DataImporter {
 
     private final CakeRepository repository;
 
-    private final ModelMapper modelMapper;
+    private final CakeMapper mapper;
 
-    public DataImporter(RestTemplate restTemplate, CakeRepository repository, ModelMapper modelMapper) {
+    public DataImporter(RestTemplate restTemplate, CakeRepository repository, CakeMapper mapper) {
         this.restTemplate = restTemplate;
         this.repository = repository;
-        this.modelMapper = modelMapper;
+        this.mapper = mapper;
     }
 
     @PostConstruct
@@ -51,17 +52,15 @@ public class DataImporter {
         if (statusCode != HttpStatus.OK) {
             throw new RuntimeException("Unexpected http status : " + statusCode);
         }
-        List<CakeEntity> entities = Optional.ofNullable(responseEntity.getBody())
+        Set<CakeEntity> entities = Optional.ofNullable(responseEntity.getBody())
                 .map(list ->
                         list.stream()
-                                .map(this::modelToEntity)
-                                .collect(Collectors.toList())
+                                .map(mapper::modelToEntity)
+                                .collect(Collectors.toSet())
                 ).orElseThrow(() -> new RuntimeException("Import went wrong"));
         log.trace("About to save {} entities", entities.size());
         repository.saveAll(entities);
     }
 
-    private CakeEntity modelToEntity(Cake cake) {
-        return modelMapper.map(cake, CakeEntity.class);
-    }
+
 }
