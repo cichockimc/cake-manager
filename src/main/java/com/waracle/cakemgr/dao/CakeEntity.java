@@ -1,29 +1,33 @@
-package com.waracle.cakemgr;
-
-import java.io.Serializable;
+package com.waracle.cakemgr.dao;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@org.hibernate.annotations.Entity(dynamicUpdate = true)
-@Table(name = "Employee", uniqueConstraints = {@UniqueConstraint(columnNames = "ID"), @UniqueConstraint(columnNames = "EMAIL")})
+//@Table(name = "Cake", uniqueConstraints = {@UniqueConstraint(columnNames = "id"), @UniqueConstraint(columnNames = "title")})
+@Table(name = "Cake")
 public class CakeEntity implements Serializable {
 
     private static final long serialVersionUID = -1798070786993154676L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
-    private Integer employeeId;
+    @Column(name = "id", unique = true, nullable = false)
+    private Integer id;
 
-    @Column(name = "EMAIL", unique = true, nullable = false, length = 100)
+    //unique = true,
+    @Column(name = "title", nullable = false, length = 100)
     private String title;
 
-    @Column(name = "FIRST_NAME", unique = false, nullable = false, length = 100)
+    @Column(name = "description", nullable = false, length = 100)
     private String description;
 
-    @Column(name = "LAST_NAME", unique = false, nullable = false, length = 300)
+    @Column(name = "image", nullable = false, length = 300)
     private String image;
+
+    public Integer getId() {
+        return id;
+    }
 
     public String getTitle() {
         return title;

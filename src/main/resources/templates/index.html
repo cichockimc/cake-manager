@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Cake manager</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid blueviolet;
+    }
+</style>
+<body>
+<p th:text="Cakes"></p>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Image url</th>
+    </tr>
+    <tr th:each="cake: ${cakes}">
+        <td th:text="${cake.title}"></td>
+        <td th:text="${cake.description}"></td>
+        <td th:text="${cake.image}"></td>
+    </tr>
+</table>
+</body>
+</html>
