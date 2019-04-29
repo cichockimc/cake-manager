@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.waracle</groupId>
     <artifactId>cake-manager</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <version>1.1-SNAPSHOT</version>
     <properties>
         <java.version>1.8</java.version>
