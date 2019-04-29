@@ -8,17 +8,23 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Image url</th>
-    </tr>
-    <tr th:each="cake: ${cakes}">
-        <td th:text="${cake.title}"></td>
-        <td th:text="${cake.description}"></td>
-        <td th:text="${cake.image}"></td>
-    </tr>
-</table>
+<div class="bd-example bd-example-type">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Image url</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cake: ${cakes}">
+            <td th:text="${cake.title}"></td>
+            <td th:text="${cake.description}"></td>
+            <td th:text="${cake.image}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

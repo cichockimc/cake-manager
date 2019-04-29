@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,5 +27,10 @@ public class CakeService {
         return cakes;
     }
 
+    public Integer add(Cake cake) {
+        Integer id = Optional.ofNullable(repository.save(mapper.modelToEntity(cake)).getId()).orElseThrow(() -> new RuntimeException("Saving " + cake + " failed"));
+        log.debug("Saved new entity, id: {}", id);
+        return id;
+    }
 
 }

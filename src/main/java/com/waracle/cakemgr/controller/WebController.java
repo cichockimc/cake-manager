@@ -1,4 +1,4 @@
-package com.waracle.cakemgr.controller.web;
+package com.waracle.cakemgr.controller;
 
 import com.waracle.cakemgr.service.CakeService;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 public class WebController {
 
-    final CakeService service;
+    private final CakeService service;
 
     public WebController(CakeService service) {
         this.service = service;
