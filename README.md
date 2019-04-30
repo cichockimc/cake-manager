@@ -35,8 +35,11 @@ TBA
 
 # Endpoints
 
-- GET /
-- GET /cakes
-- PUT /cakes 
+- GET / (human readable output - web page)
 
+*note* errors on js side of things are not handled properly (logged to js console only - Ctrl + J in Chrome)
+
+- GET /cakes
+- POST /cakes 
+- GET /cakes/download
 

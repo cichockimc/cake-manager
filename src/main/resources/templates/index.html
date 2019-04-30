@@ -6,9 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+    <script th:src="@{/main.js}"></script>
+    <link th:href="@{/main.css}" rel="stylesheet"/>
 </head>
-<body>
+<body ng-app="CakeManagement" ng-controller="CakeController">
 <div class="bd-example bd-example-type">
+    <form ng-submit="submitCake()">
+        <table>
+            <tr>
+                <td>Title</td>
+                <td><input type="text" ng-model="CakeForm.title" placeholder="required, letters and numbers only"
+                           required
+                           ng-pattern="/^[a-zA-Z0-9]+$/"/></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" ng-model="CakeForm.desc" placeholder="(optional) Letters and numbers only"
+                           ng-pattern="/^[a-zA-Z0-9]+$/"/></td>
+            </tr>
+            <tr>
+                <td>Image url</td>
+                <td><input type="text" ng-model="CakeForm.image" placeholder="(optional) valid url"
+                           ng-pattern="/^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Submit" class="blue-button"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br/>
     <table class="table">
         <thead>
         <tr>
@@ -19,11 +50,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="cake: ${cakes}">
-            <td th:text="${cake.id}"></td>
-            <td th:text="${cake.title}"></td>
-            <td th:text="${cake.description}"></td>
-            <td><img th:src="${cake.image}" alt="Cake sample" height=50 width=50></td>
+        <tr ng-repeat="cake in Cakes">
+            <td> {{ cake.id }}</td>
+            <td> {{ cake.title }}</td>
+            <td>{{ cake.desc }}</td>
+            <td><img ng-src="{{ cake.image }}" alt="Cake sample" height=50 width=50></td>
         </tr>
         </tbody>
     </table>
