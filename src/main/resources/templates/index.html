@@ -2,26 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Cake manager</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<style>
-    table, th, td {
-        border: 1px solid blueviolet;
-    }
-</style>
 <body>
-<p th:text="Cakes"></p>
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Image url</th>
-    </tr>
-    <tr th:each="cake: ${cakes}">
-        <td th:text="${cake.title}"></td>
-        <td th:text="${cake.description}"></td>
-        <td th:text="${cake.image}"></td>
-    </tr>
-</table>
+<div class="bd-example bd-example-type">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Image</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cake: ${cakes}">
+            <td th:text="${cake.id}"></td>
+            <td th:text="${cake.title}"></td>
+            <td th:text="${cake.description}"></td>
+            <td><img th:src="${cake.image}" alt="Cake sample" height=50 width=50></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

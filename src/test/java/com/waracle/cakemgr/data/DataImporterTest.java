@@ -22,6 +22,6 @@ public class DataImporterTest {
     @Test
     public void init() {
         List<CakeEntity> all = repository.findAll();
-        assertEquals(20L, all.size());
+        assertEquals(5L, all.size());
     }
 }

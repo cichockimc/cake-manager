@@ -1,4 +1,4 @@
-package com.waracle.cakemgr.controller.web;
+package com.waracle.cakemgr.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

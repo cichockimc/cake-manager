@@ -2,9 +2,9 @@ package com.waracle.cakemgr.dao;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
-//@Table(name = "Cake", uniqueConstraints = {@UniqueConstraint(columnNames = "id"), @UniqueConstraint(columnNames = "title")})
 @Table(name = "Cake")
 public class CakeEntity implements Serializable {
 
@@ -15,8 +15,7 @@ public class CakeEntity implements Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
-    //unique = true,
-    @Column(name = "title", nullable = false, length = 100)
+    @Column(name = "title", unique = true, nullable = false, length = 100)
     private String title;
 
     @Column(name = "description", nullable = false, length = 100)
@@ -53,4 +52,26 @@ public class CakeEntity implements Serializable {
         this.image = image;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CakeEntity)) return false;
+
+        CakeEntity that = (CakeEntity) o;
+
+        if (!Objects.equals(id, that.id)) return false;
+        if (!Objects.equals(title, that.title)) return false;
+        if (!Objects.equals(description, that.description)) return false;
+        return Objects.equals(image, that.image);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (image != null ? image.hashCode() : 0);
+        return result;
+    }
 }
