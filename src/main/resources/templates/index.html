@@ -12,16 +12,18 @@
     <table class="table">
         <thead>
         <tr>
+            <th>Id</th>
             <th>Title</th>
             <th>Description</th>
-            <th>Image url</th>
+            <th>Image</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="cake: ${cakes}">
+            <td th:text="${cake.id}"></td>
             <td th:text="${cake.title}"></td>
             <td th:text="${cake.description}"></td>
-            <td th:text="${cake.image}"></td>
+            <td><img th:src="${cake.image}" alt="Cake sample" height=50 width=50></td>
         </tr>
         </tbody>
     </table>
