@@ -37,7 +37,6 @@ app.controller("CakeController", function ($scope, $http) {
 
     // Private Method  
     // HTTP GET- get all Cakes collection
-    // Call: http://localhost:8080/cakes
     function _refreshCakeData() {
         $http({
             method: 'GET',

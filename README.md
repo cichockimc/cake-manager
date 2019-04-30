@@ -22,7 +22,7 @@ Repository (automatic builds triggered by push to master branch)
 `https://hub.docker.com/r/cichockimc/cake-manager`
 
 # Cloud deployment 
-TBA
+Solution is kubernetes friendly.
 
 # Model
 ```json

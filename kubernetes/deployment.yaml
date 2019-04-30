@@ -13,23 +13,23 @@ spec:
         app: cake-manager
     spec:
       containers:
-        - name: server
-          image: http://registry.hub.docker.com/cichockimc/cake-manager:latest
+        - name: cake-manager
+          image: gcr.io/cake-manager-project/cake-manager:latest
           livenessProbe:
             httpGet:
               path: /actuator/health
-              port: 8080
+              port: 8282
             initialDelaySeconds: 30
             periodSeconds: 3
           readinessProbe:
             httpGet:
               path: /actuator/health
-              port: 8080
+              port: 8282
             initialDelaySeconds: 40
             periodSeconds: 10
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 8282
           env:
             - name: PORT
-              value: "8080"
+              value: "8282"
