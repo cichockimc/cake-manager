@@ -4,9 +4,9 @@
     <groupId>com.waracle</groupId>
     <artifactId>cake-manager</artifactId>
     <packaging>jar</packaging>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
         <jetty-maven-plugin.version>9.4.17.v20190418</jetty-maven-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <hsqldb.version>2.4.1</hsqldb.version>
@@ -28,7 +28,7 @@
             <url>http://repo.spring.io/milestone</url>
         </pluginRepository>
     </pluginRepositories>
-    
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
