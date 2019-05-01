@@ -1,0 +1,17 @@
+version: '3'
+services:
+  pg-db:
+    image: postgres:9.5.16
+    volumes:
+    - db-data:/home/docker/shared/pg-data
+    ports:
+    - 5432:5432/tcp
+  cake-api:
+    image: cichockimc/cake-manager:latest
+    ports:
+    - "8282:8282"
+    environment:
+    - "SPRING_PROFILES_ACTIVE=postgres"
+volumes:
+  db-data:
+    driver: local
