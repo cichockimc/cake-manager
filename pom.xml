@@ -67,6 +67,11 @@
             <artifactId>modelmapper</artifactId>
             <version>2.3.3</version>
         </dependency>
+        <!-- PostgreSQL -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
         <!-- In-memory database -->
         <dependency>
             <groupId>org.hsqldb</groupId>
